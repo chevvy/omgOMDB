@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<div class="results" *ngIf="results">
+  <app-tile *ngFor="let result of results"
+            [movie]="result"
+            (addMovie)="add($event)"
+            (removeMovie)="remove($event)"
+            [isResultRemovable]="isResultRemovable"
+  ></app-tile>
+</div>
+

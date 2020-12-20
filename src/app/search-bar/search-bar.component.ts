@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {SearchService} from './search.service';
-import { Result } from './result';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { SearchService } from './search.service';
+import { Result } from '../movie/result';
+
 
 @Component({
   selector: 'app-search-bar',
@@ -14,15 +15,22 @@ export class SearchBarComponent implements OnInit {
     private http: HttpClient,
     private searchService: SearchService) { }
 
-  results: Result;
+  @Output() movieList = new EventEmitter<Result>(); // TODO générer liste de film
+
+  movie: Result;
+  searchterm: string;
 
   ngOnInit(): void {
   }
 
-  getMessage($event): void {
-    this.searchService.getMoviesByTitle($event.target.value).subscribe(list => {
-      this.results = list;
+  getMovie(): void {
+    this.searchService.getMoviesByTitle(this.searchterm).subscribe(movie => {
+      this.movieList.emit(movie);
     });
+  }
+
+  setSearchTerm($event): void{
+    this.searchterm = $event.target.value;
   }
 
 }

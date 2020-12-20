@@ -1,0 +1,3 @@
+<div>{{movie.Title + ' (' + movie.Year + ')'}}</div>
+<button *ngIf="movie && !isResultRemovable" (click)="add()">Add</button>
+<button *ngIf="isResultRemovable" (click)="remove()">Remove</button>

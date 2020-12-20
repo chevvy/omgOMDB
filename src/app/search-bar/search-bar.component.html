@@ -1,5 +1,4 @@
-<p>search-bar works!</p>
-<label>
-  <input (keyup)="getMessage($event)"/>
+<label class="searchSection">
+  <input (keyup)="setSearchTerm($event)"/>
+  <button (click)="getMovie()">Go!</button>
 </label>
-<div>{{results.Title + '(' + results.Year + ')'}}</div>
