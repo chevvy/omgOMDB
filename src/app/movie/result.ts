@@ -3,3 +3,7 @@ export interface Result {
   'Year': string;
   'Metascore': string;
 }
+
+export interface SearchResults {
+  'Search': Result[];
+}

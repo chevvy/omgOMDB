@@ -20,7 +20,7 @@ export class NominationsComponent implements OnInit {
     if (!this.searchResults){
       this.searchResults = [];
     }
-    this.searchResults.push($event);
+    this.searchResults = $event.Search;
   }
 
   addNominations($event): void {
