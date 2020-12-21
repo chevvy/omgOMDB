@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Result} from '../movie/result';
+import { Result } from '../movie/result';
+
+export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}
 
 @Component({
   selector: 'app-nominations',
@@ -11,6 +18,13 @@ export class NominationsComponent implements OnInit {
   constructor() { }
   searchResults: Result[];
   nominationsList: Result[];
+
+  tiles: Tile[] = [
+    {text: 'One', cols: 2, rows: 1, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 3, color: 'lightgreen'},
+    {text: 'Three', cols: 2, rows: 2, color: 'lightpink'},
+
+  ];
 
   ngOnInit(): void {
     this.nominationsList = [{Title: 'allo', Year: 'mon coco', Metascore: '10'}];
@@ -38,5 +52,7 @@ export class NominationsComponent implements OnInit {
   removeNominations($event): void {
     this.nominationsList = this.nominationsList.filter(movie => movie.Title !== $event.Title);
   }
+
+
 
 }

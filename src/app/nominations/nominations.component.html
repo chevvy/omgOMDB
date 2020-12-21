@@ -1,22 +1,21 @@
-<Title>Nominations manager</Title>
-<app-search-bar
-  (movieList)="setSearchResults($event)"></app-search-bar>
-<div class="container">
-  <div class="search">
-    <app-results *ngIf="searchResults"
-                 [results]="searchResults"
-                 [title]="'Search results'"
-                 [isResultRemovable]="false"
-                 (addNomination)="addNominations($event)"
-    ></app-results>
-  </div>
-  <div class="nominationList">
+<mat-grid-list cols="4" rowHeight="5rem">
+  <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightblue'">
+    <app-search-bar (movieList)="setSearchResults($event)"></app-search-bar>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="3" [style.background]="'lightgreen'">
     <app-results *ngIf="nominationsList"
                  [results]="nominationsList"
                  [title]="'Nomination List'"
                  [isResultRemovable]="true"
                  (removeNomination)="removeNominations($event)"
     ></app-results>
-  </div>
-</div>
-
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="'deeppurple'">
+    <app-results *ngIf="searchResults"
+                 [results]="searchResults"
+                 [title]="'Search results'"
+                 [isResultRemovable]="false"
+                 (addNomination)="addNominations($event)"
+    ></app-results>
+  </mat-grid-tile>
+</mat-grid-list>
