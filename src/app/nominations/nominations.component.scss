@@ -2,8 +2,10 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  mat-card {
+
+  .search-card, .nomination-card {
     width: 30rem;
+    margin: 0.77rem;
   }
 
   .detail-card {

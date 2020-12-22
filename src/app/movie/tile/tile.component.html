@@ -1,4 +1,8 @@
-<mat-expansion-panel>
+<mat-expansion-panel
+  [class.mat-elevation-z3]="!isTileSelected"
+  [class.mat-elevation-z9]="isTileSelected"
+  (click)="tileClicked()">
+
   <mat-expansion-panel-header>
     <mat-panel-title>{{movie.Title + " (" + movie.Year + ")"}}</mat-panel-title>
   </mat-expansion-panel-header>

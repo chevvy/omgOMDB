@@ -13,27 +13,27 @@
     </mat-card-content>
   </mat-card>
 
-    <mat-card class="nomination-card">
-      <mat-card-content>
-        <app-results *ngIf="nominationsList"
-                     [results]="nominationsList"
-                     [title]="'Nomination List'"
-                     [isResultRemovable]="true"
-                     (selectMovie)="selectMovie($event)"
-                     (removeNomination)="removeNominations($event)"
-        ></app-results>
-        <mat-card class="detail-card" *ngIf="selectedMovie">
-          <mat-card-header>
-            <mat-card-title>{{selectedMovie.Title}}</mat-card-title>
-            <mat-card-subtitle>Metacritic score : {{selectedMovie.Metascore}}</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src="{{selectedMovie.Poster}}" alt="Poster of {{selectedMovie.Title}}">
-          <mat-card-content>
-            <p>
-              {{selectedMovie.Plot}}
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </mat-card-content>
-    </mat-card>
+  <mat-card class="nomination-card">
+    <mat-card-content>
+      <app-results *ngIf="nominationsList"
+                   [results]="nominationsList"
+                   [title]="'Nomination List'"
+                   [isResultRemovable]="true"
+                   (selectMovie)="selectMovie($event)"
+                   (removeNomination)="removeNominations($event)"
+      ></app-results>
+      <mat-card class="detail-card" *ngIf="selectedMovie">
+        <mat-card-header>
+          <mat-card-title>{{selectedMovie.Title}}</mat-card-title>
+          <mat-card-subtitle>Metacritic score : {{selectedMovie.Metascore}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{selectedMovie.Poster}}" alt="Poster of {{selectedMovie.Title}}">
+        <mat-card-content>
+          <p>
+            {{selectedMovie.Plot}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
 

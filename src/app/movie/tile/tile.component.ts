@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Result, MovieResult} from '../result';
+import { Result } from '../result';
 
 @Component({
   selector: 'app-tile',
@@ -11,6 +11,8 @@ export class TileComponent  {
   @Output() removeMovie = new EventEmitter<Result>();
   @Output() selectMovie = new EventEmitter<number>();
   @Input() isResultRemovable;
+
+  isTileSelected = false;
 
   constructor() { }
   // TODO un checkup qui vérifie dans le store lorsque changement de liste de nominations
@@ -26,6 +28,11 @@ export class TileComponent  {
   }
 
   select(): void {
+    this.tileClicked();
     this.selectMovie.emit(this.movie.imdbID);
+  }
+
+  tileClicked(): void {
+    this.isTileSelected ? this.isTileSelected = false : this.isTileSelected = true;
   }
 }
