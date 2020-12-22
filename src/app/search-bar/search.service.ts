@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {MovieResult, SearchResults} from '../movie/result';
+import { MovieResult, SearchResults } from '../movie/result';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class SearchService {
     private http: HttpClient,
   ){ }
 
-  private apiUrl = 'http://omdbapi.com/?apikey=b76b4218';
+  private apiUrl = 'https://omdbapi.com/?apikey=b76b4218';
 
   getMovieByImdbID(imdbID: number): Observable<MovieResult> {
     const apiReq = this.apiUrl + '&i=' + imdbID;
