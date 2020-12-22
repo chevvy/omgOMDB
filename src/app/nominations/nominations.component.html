@@ -1,21 +1,33 @@
-<mat-grid-list cols="4" rowHeight="5rem">
-  <mat-grid-tile [colspan]="2" [rowspan]="1" [style.background]="'lightblue'">
-    <app-search-bar (movieList)="setSearchResults($event)"></app-search-bar>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1" [rowspan]="3" [style.background]="'lightgreen'">
-    <app-results *ngIf="nominationsList"
-                 [results]="nominationsList"
-                 [title]="'Nomination List'"
-                 [isResultRemovable]="true"
-                 (removeNomination)="removeNominations($event)"
-    ></app-results>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="2" [rowspan]="2" [style.background]="'deeppurple'">
-    <app-results *ngIf="searchResults"
-                 [results]="searchResults"
-                 [title]="'Search results'"
-                 [isResultRemovable]="false"
-                 (addNomination)="addNominations($event)"
-    ></app-results>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="search-container">
+  <mat-card>
+    <mat-card-content>
+      <app-search-bar (movieList)="setSearchResults($event)"></app-search-bar>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="search-result-container">
+  <mat-card>
+    <mat-card-content>
+      <app-results *ngIf="searchResults"
+                   [results]="searchResults"
+                   [title]="'Search results'"
+                   [isResultRemovable]="false"
+                   (addNomination)="addNominations($event)"
+      ></app-results>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="nomination-container">
+  <mat-card>
+    <mat-card-content>
+      <app-results *ngIf="nominationsList"
+                   [results]="nominationsList"
+                   [title]="'Nomination List'"
+                   [isResultRemovable]="true"
+                   (removeNomination)="removeNominations($event)"
+      ></app-results>
+    </mat-card-content>
+  </mat-card>
+</div>

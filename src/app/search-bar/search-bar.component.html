@@ -1,4 +1,15 @@
-<label class="searchSection">
-  <input (keyup)="setSearchTerm($event)"/>
-  <button (click)="getMovieList()">Go!</button>
-</label>
+<!--<label class="searchSection">-->
+<!--  <input (keyup)="setSearchTerm($event)"/>-->
+<!--  <button (click)="getMovieList()">Go!</button>-->
+<!--</label>-->
+<form>
+  <mat-form-field>
+    <input
+      type="text"
+      placeholder="Enter a movie title"
+      matInput
+      (keyup)="setSearchTermAndGetMovieList($event)">
+  </mat-form-field>
+<!--  <button mat-button (click)="getMovieList()">Go!</button>-->
+</form>
+

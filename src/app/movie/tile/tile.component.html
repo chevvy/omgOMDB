@@ -1,13 +1,11 @@
-<!--<div>{{movie.Title + ' (' + movie.Year + ')'}}</div>-->
-<!--<button *ngIf="movie && !isResultRemovable" (click)="add()">Add</button>-->
-<!--<button *ngIf="isResultRemovable" (click)="remove()">Remove</button>-->
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{movie.Title}}</mat-panel-title>
+    <mat-panel-description>
+      {{movie.Year}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
 
-<mat-card>
-  {{movie.Title + ' (' + movie.Year + ')'}}
-  <mat-card-actions>
-    <button mat-button *ngIf="movie && !isResultRemovable" (click)="add()">Add</button>
-  </mat-card-actions>
-  <mat-card-actions>
-    <button mat-button *ngIf="isResultRemovable" (click)="remove()">Remove</button>
-  </mat-card-actions>
-</mat-card>
+  <button mat-button *ngIf="movie && !isResultRemovable" (click)="add()">Add</button>
+  <button mat-button *ngIf="isResultRemovable" (click)="remove()">Remove</button>
+</mat-expansion-panel>

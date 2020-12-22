@@ -39,4 +39,9 @@ export class SearchBarComponent implements OnInit {
     this.searchterm = $event.target.value;
   }
 
+  setSearchTermAndGetMovieList($event): void {
+    this.setSearchTerm($event);
+    this.getMovieList();
+  }
+
 }
