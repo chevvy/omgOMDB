@@ -14,6 +14,7 @@ export class ResultsComponent{
 
   @Output() removeNomination = new EventEmitter<Result>();
   @Output() addNomination = new EventEmitter<Result>();
+  @Output() selectMovie = new EventEmitter<number>();
 
   constructor() { }
 
@@ -23,6 +24,10 @@ export class ResultsComponent{
 
   add($event): void {
     this.addNomination.emit($event);
+  }
+
+  select($event): void {
+    this.selectMovie.emit($event);
   }
 
 }

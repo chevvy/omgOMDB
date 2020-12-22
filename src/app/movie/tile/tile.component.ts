@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Result} from '../result';
+import {Result, MovieResult} from '../result';
 
 @Component({
   selector: 'app-tile',
@@ -9,6 +9,7 @@ import {Result} from '../result';
 export class TileComponent  {
   @Output() addMovie = new EventEmitter<Result>();
   @Output() removeMovie = new EventEmitter<Result>();
+  @Output() selectMovie = new EventEmitter<number>();
   @Input() isResultRemovable;
 
   constructor() { }
@@ -22,5 +23,9 @@ export class TileComponent  {
 
   remove(): void {
     this.removeMovie.emit(this.movie);
+  }
+
+  select(): void {
+    this.selectMovie.emit(this.movie.imdbID);
   }
 }

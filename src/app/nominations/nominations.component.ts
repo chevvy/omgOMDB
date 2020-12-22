@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Result } from '../movie/result';
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import {MovieResult, Result} from '../movie/result';
+import {SearchService} from '../search-bar/search.service';
 
 @Component({
   selector: 'app-nominations',
@@ -15,19 +9,15 @@ export interface Tile {
 })
 export class NominationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private searchService: SearchService
+  ) { }
   searchResults: Result[];
   nominationsList: Result[];
-
-  tiles: Tile[] = [
-    {text: 'One', cols: 2, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 3, color: 'lightgreen'},
-    {text: 'Three', cols: 2, rows: 2, color: 'lightpink'},
-
-  ];
+  selectedMovie: MovieResult;
 
   ngOnInit(): void {
-    this.nominationsList = [{Title: 'allo', Year: 'mon coco', Metascore: '10'}];
+    this.nominationsList = [{Title: 'allo', Year: 'mon coco', imdbID: 1234, Poster: 'http://hello.com'}];
   }
 
   setSearchResults($event): void {
@@ -53,6 +43,8 @@ export class NominationsComponent implements OnInit {
     this.nominationsList = this.nominationsList.filter(movie => movie.Title !== $event.Title);
   }
 
-
-
+  selectMovie($event: number): void {
+    this.searchService.getMovieByImdbID($event).subscribe(movie => this.selectedMovie = movie);
+    console.log(this.selectedMovie);
+  }
 }

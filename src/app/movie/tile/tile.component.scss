@@ -1,4 +1,8 @@
-:host{
-  display: flex;
-  margin: 0.5rem
+:host {
+  mat-expansion-panel {
+    margin-bottom: 1rem;
+    button {
+      margin-right: 0.5rem;
+    }
+  }
 }

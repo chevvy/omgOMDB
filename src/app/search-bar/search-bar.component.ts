@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SearchService } from './search.service';
 import {Result, SearchResults} from '../movie/result';
@@ -9,7 +9,7 @@ import {Result, SearchResults} from '../movie/result';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent {
 
   constructor(
     private http: HttpClient,
@@ -19,15 +19,6 @@ export class SearchBarComponent implements OnInit {
 
   movie: Result;
   searchterm: string;
-
-  ngOnInit(): void {
-  }
-
-  // getMovie(): void {
-  //   this.searchService.getMovieByTitle(this.searchterm).subscribe(movie => {
-  //     this.movieList.emit(movie);
-  //   });
-  // }
 
   getMovieList(): void {
     this.searchService.getResultsByTitle(this.searchterm).subscribe(result => {
@@ -43,5 +34,4 @@ export class SearchBarComponent implements OnInit {
     this.setSearchTerm($event);
     this.getMovieList();
   }
-
 }

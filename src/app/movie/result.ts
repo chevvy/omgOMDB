@@ -1,9 +1,15 @@
 export interface Result {
   'Title': string;
   'Year': string;
-  'Metascore': string;
+  'imdbID': number;
+  'Poster': string;
 }
 
 export interface SearchResults {
   'Search': Result[];
+}
+
+export interface MovieResult extends Result{
+  'Plot': string;
+  'Metascore': number;
 }
