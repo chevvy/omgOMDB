@@ -22,7 +22,7 @@
                    (selectMovie)="selectMovie($event)"
                    (removeNomination)="removeNominations($event)"
       ></app-results>
-      <mat-card class="detail-card" *ngIf="selectedMovie">
+      <mat-card class="detail-card" *ngIf="selectedMovie" [class.mat-elevation-z5]="true">
         <mat-card-header>
           <mat-card-title>{{selectedMovie.Title}}</mat-card-title>
           <mat-card-subtitle>Metacritic score : {{selectedMovie.Metascore}}</mat-card-subtitle>

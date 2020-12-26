@@ -1,5 +1,6 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Result } from '../result';
+import { MatExpansionPanel } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-tile',
@@ -12,6 +13,8 @@ export class TileComponent  {
   @Output() selectMovie = new EventEmitter<number>();
   @Input() isResultRemovable;
 
+  @ViewChild(MatExpansionPanel) tileExpansionPanel: MatExpansionPanel;
+
   isTileSelected = false;
 
   constructor() { }
@@ -21,15 +24,16 @@ export class TileComponent  {
 
   add(): void {
     this.addMovie.emit(this.movie);
+    this.tileExpansionPanel.close();
   }
 
   remove(): void {
     this.removeMovie.emit(this.movie);
   }
 
-  select(): void {
-    this.tileClicked();
+  getMoreDetails(): void {
     this.selectMovie.emit(this.movie.imdbID);
+    this.tileExpansionPanel.close();
   }
 
   tileClicked(): void {

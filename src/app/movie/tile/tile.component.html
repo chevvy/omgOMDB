@@ -1,13 +1,28 @@
 <mat-expansion-panel
-  [class.mat-elevation-z3]="!isTileSelected"
-  [class.mat-elevation-z9]="isTileSelected"
+  [class.mat-elevation-z5]="!isTileSelected"
+  [class.mat-elevation-z14]="isTileSelected"
   (click)="tileClicked()">
 
   <mat-expansion-panel-header>
     <mat-panel-title>{{movie.Title + " (" + movie.Year + ")"}}</mat-panel-title>
   </mat-expansion-panel-header>
 
-  <button mat-raised-button style="background: #C2185B" *ngIf="movie && !isResultRemovable" (click)="add()">Nominate</button>
-  <button mat-raised-button style="background: #C2185B" *ngIf="isResultRemovable" (click)="remove()">Remove</button>
-  <button mat-raised-button style="background: #C2185B" (click)="select()">Get more details</button>
+  <button
+    mat-raised-button
+    style="background: #C2185B"
+    *ngIf="movie && !isResultRemovable"
+    (click)="add()">
+    Nominate</button>
+  <button
+    mat-raised-button
+    style="background: #C2185B"
+    *ngIf="isResultRemovable"
+    (click)="remove()">
+    Remove</button>
+  <button
+    mat-raised-button
+    style="background: #C2185B"
+    (click)="getMoreDetails()">
+    Get more details</button>
+
 </mat-expansion-panel>

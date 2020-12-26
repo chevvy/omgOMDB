@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 :host {
   display: flex;
   justify-content: center;
@@ -9,6 +11,6 @@
   }
 
   .detail-card {
-    width: 28rem;
+    width: inherit;
   }
 }
