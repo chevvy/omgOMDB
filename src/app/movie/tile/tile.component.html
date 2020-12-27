@@ -1,9 +1,16 @@
 <mat-expansion-panel
   [class.mat-elevation-z5]="!isTileSelected"
   [class.mat-elevation-z14]="isTileSelected"
-  (click)="tileClicked()">
+  (click)="tileClicked()"
+  [@remove]="isTileRemoved ? 'removed' : 'active'"
+  (@remove.done)="remove()"
+>
 
-  <mat-expansion-panel-header>
+  <mat-expansion-panel-header  *ngIf="isResultRemovable" [@add]="tileAddState">
+    <mat-panel-title>{{movie.Title + " (" + movie.Year + ")"}}</mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-expansion-panel-header  *ngIf="!isResultRemovable">
     <mat-panel-title>{{movie.Title + " (" + movie.Year + ")"}}</mat-panel-title>
   </mat-expansion-panel-header>
 
@@ -17,7 +24,7 @@
     mat-raised-button
     style="background: #C2185B"
     *ngIf="isResultRemovable"
-    (click)="remove()">
+    (click)="isTileRemoved = true">
     Remove</button>
   <button
     mat-raised-button

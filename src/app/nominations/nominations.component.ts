@@ -1,23 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import {MovieResult, Result} from '../movie/result';
-import {SearchService} from '../search-bar/search.service';
+import { MovieResult, Result } from '../movie/result';
+import { SearchService } from '../search-bar/search.service';
+import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-nominations',
   templateUrl: './nominations.component.html',
-  styleUrls: ['./nominations.component.scss']
+  styleUrls: ['./nominations.component.scss'],
+  animations: [
+    trigger('getDetails', [
+      state('loaded', style({})),
+      state('loading', style({
+        height: 0,
+      })),
+      transition('* => loaded', [
+        sequence([
+          style({ height: 0}),
+          animate('0.2s', style({ }))
+        ])
+      ])
+    ])
+  ]
 })
+
 export class NominationsComponent implements OnInit {
 
   constructor(
     private searchService: SearchService
   ) { }
+
   searchResults: Result[];
   nominationsList: Result[];
   selectedMovie: MovieResult;
+  areDetailsLoaded = false;
 
   ngOnInit(): void {
-    this.nominationsList = [{Title: 'allo', Year: 'mon coco', imdbID: 1234, Poster: 'http://hello.com'}];
+    this.nominationsList = [];
   }
 
   setSearchResults($event): void {
@@ -44,7 +62,10 @@ export class NominationsComponent implements OnInit {
   }
 
   selectMovie($event: number): void {
-    this.searchService.getMovieByImdbID($event).subscribe(movie => this.selectedMovie = movie);
-    console.log(this.selectedMovie);
+
+    this.searchService.getMovieByImdbID($event).subscribe(movie => {
+      this.areDetailsLoaded = true;
+      this.selectedMovie = movie;
+    });
   }
 }
