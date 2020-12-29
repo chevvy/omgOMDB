@@ -12,7 +12,6 @@ import { Observable } from 'rxjs';
 export class SearchBarComponent {
 
   constructor(
-    private http: HttpClient,
     private searchService: SearchService
   ) { }
 

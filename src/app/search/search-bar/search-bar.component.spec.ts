@@ -1,22 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { SearchBarComponent } from './search-bar.component';
+import { SearchService } from '../search.service';
+import { SearchMockService } from '../search-mock.service';
 
 describe('SearchBarComponent', () => {
   let component: SearchBarComponent;
-  let fixture: ComponentFixture<SearchBarComponent>;
+  let searchService: SearchService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchBarComponent ]
+      declarations: [ SearchBarComponent ],
+      providers: [
+        SearchBarComponent,
+        { provide: SearchService, useClass: SearchMockService}
+      ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchBarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.inject(SearchBarComponent);
+    searchService = TestBed.inject(SearchService);
   });
 
   it('should create', () => {

@@ -1,22 +1,29 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NominationsManagerComponent } from './nominations-manager.component';
+import {SearchService} from '../search/search.service';
+import {SearchMockService} from '../search/search-mock.service';
 
-describe('NominationsComponent', () => {
+
+describe('NominationsManagerComponent', () => {
   let component: NominationsManagerComponent;
-  let fixture: ComponentFixture<NominationsManagerComponent>;
+  let searchService: SearchService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NominationsManagerComponent ]
+      declarations: [ NominationsManagerComponent ],
+      providers: [
+        NominationsManagerComponent,
+        { provide: SearchService, useClass: SearchMockService }
+      ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NominationsManagerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.inject(NominationsManagerComponent);
+    searchService = TestBed.inject(SearchService);
+
   });
 
   it('should create', () => {
