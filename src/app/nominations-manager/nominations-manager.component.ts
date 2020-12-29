@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { MovieResult, Result } from '../movie/result';
-import { SearchService } from '../search-bar/search.service';
+import { MovieDetails, Movie } from '../shared/movie.interface';
+import { SearchService } from '../search/search.service';
 import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
-  selector: 'app-nominations',
-  templateUrl: './nominations.component.html',
-  styleUrls: ['./nominations.component.scss'],
+  selector: 'app-nominations-manager',
+  templateUrl: './nominations-manager.component.html',
+  styleUrls: ['./nominations-manager.component.scss'],
   animations: [
     trigger('getDetails', [
       state('loaded', style({})),
@@ -23,15 +23,15 @@ import { animate, sequence, state, style, transition, trigger } from '@angular/a
   ]
 })
 
-export class NominationsComponent {
+export class NominationsManagerComponent {
 
   constructor(
     private searchService: SearchService
   ) { }
 
-  searchResults: Result[];
-  nominationsList: Result[] = [];
-  selectedMovie: MovieResult;
+  searchResults: Movie[];
+  nominationsList: Movie[] = [];
+  selectedMovie: MovieDetails;
   isDetailCardLoaded = false;
 
   setSearchResults($event): void {
@@ -44,7 +44,7 @@ export class NominationsComponent {
       return;
     }
     if (this.nominationsList.find(x => x === $event)){
-      console.log('this movie is already in the nomination list');
+      console.log('this shared is already in the nomination list');
       return;
     }
     this.nominationsList.push($event);

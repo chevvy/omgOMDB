@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TileComponent } from './tile.component';
+import { NominationsManagerComponent } from './nominations-manager.component';
 
-describe('TileComponent', () => {
-  let component: TileComponent;
-  let fixture: ComponentFixture<TileComponent>;
+describe('NominationsComponent', () => {
+  let component: NominationsManagerComponent;
+  let fixture: ComponentFixture<NominationsManagerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TileComponent ]
+      declarations: [ NominationsManagerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TileComponent);
+    fixture = TestBed.createComponent(NominationsManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

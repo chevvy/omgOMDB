@@ -1,15 +1,15 @@
-export interface Result {
+export interface Movie {
   'Title': string;
   'Year': string;
   'imdbID': number;
   'Poster': string;
 }
 
-export interface SearchResults {
-  'Search': Result[];
+export interface Movies {
+  'Search': Movie[];
 }
 
-export interface MovieResult extends Result{
+export interface MovieDetails extends Movie{
   'Plot': string;
   'Metascore': number;
 }

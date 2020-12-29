@@ -1,13 +1,13 @@
 <h1>{{title}}</h1>
 <div class="results" *ngIf="results">
   <mat-accordion>
-    <app-tile
+    <app-movie
       *ngFor="let movie of results"
       [movie]="movie"
       (nominateMovie)="emitNominate($event)"
       (removeMovie)="emitRemove($event)"
       (getMovieDetails)="emitGetMovieDetails($event)"
       [isResultRemovable]="areResultsRemovable"
-    ></app-tile>
+    ></app-movie>
   </mat-accordion>
 </div>

@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter, ViewChild, OnInit } from '@angular/core';
-import { Result } from '../result';
+import { Movie } from '../movie.interface';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
-  selector: 'app-tile',
-  templateUrl: './tile.component.html',
-  styleUrls: ['./tile.component.scss'],
+  selector: 'app-movie',
+  templateUrl: './movie.component.html',
+  styleUrls: ['./movie.component.scss'],
   animations: [
     trigger('remove', [
       state('active', style({ })),
@@ -33,13 +33,13 @@ import { animate, sequence, state, style, transition, trigger } from '@angular/a
   ]
 })
 
-export class TileComponent implements OnInit {
-  @Output() nominateMovie = new EventEmitter<Result>();
-  @Output() removeMovie = new EventEmitter<Result>();
+export class MovieComponent implements OnInit {
+  @Output() nominateMovie = new EventEmitter<Movie>();
+  @Output() removeMovie = new EventEmitter<Movie>();
   @Output() getMovieDetails = new EventEmitter<number>();
 
   @Input() isResultRemovable;
-  @Input() movie: Result;
+  @Input() movie: Movie;
 
   @ViewChild(MatExpansionPanel) tileExpansionPanel: MatExpansionPanel;
 

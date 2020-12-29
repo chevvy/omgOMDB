@@ -2,28 +2,28 @@
     <mat-card-content>
       <app-search-bar (searchResults)="setSearchResults($event)"></app-search-bar>
       <mat-card-content>
-        <app-results
+        <app-movies-list
           *ngIf="searchResults"
           [results]="searchResults"
-          [title]="'Search results'"
+          [title]="'Search movies-list'"
           [areResultsRemovable]="false"
           (getMovieDetails)="getSelectedMovieDetails($event)"
           (addNomination)="addNominations($event)">
-        </app-results>
+        </app-movies-list>
       </mat-card-content>
     </mat-card-content>
   </mat-card>
 
   <mat-card class="nomination-card">
     <mat-card-content>
-      <app-results
+      <app-movies-list
         *ngIf="nominationsList"
         [results]="nominationsList"
         [title]="'Nomination List'"
         [areResultsRemovable]="true"
         (getMovieDetails)="getSelectedMovieDetails($event)"
         (removeNomination)="removeNominations($event)">
-      </app-results>
+      </app-movies-list>
       <!-- TODO put details panel in its own component -->
       <mat-card
         *ngIf="selectedMovie"

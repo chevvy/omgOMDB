@@ -2,11 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { SearchBarModule } from './search-bar/search-bar.module';
-import { TileComponent } from './movie/tile/tile.component';
-import { NominationsComponent } from './nominations/nominations.component';
-import { ResultsComponent } from './movie/results/results.component';
+import { SearchBarComponent } from './search/search-bar/search-bar.component';
+import { SearchBarModule } from './search/search-bar/search-bar.module';
+import { MovieComponent } from './shared/movie/movie.component';
+import { NominationsManagerComponent } from './nominations-manager/nominations-manager.component';
+import { MoviesListComponent } from './shared/movies-list/movies-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,9 +21,9 @@ import { MatInputModule } from '@angular/material/input';
   declarations: [
     AppComponent,
     SearchBarComponent,
-    TileComponent,
-    NominationsComponent,
-    ResultsComponent,
+    MovieComponent,
+    NominationsManagerComponent,
+    MoviesListComponent,
   ],
   imports: [
     BrowserModule,
