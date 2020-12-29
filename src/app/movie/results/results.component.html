@@ -2,13 +2,12 @@
 <div class="results" *ngIf="results">
   <mat-accordion>
     <app-tile
-      *ngFor="let result of results"
-      [movie]="result"
-      (addMovie)="add($event)"
-      (removeMovie)="remove($event)"
-      (selectMovie)="select($event)"
-      [isResultRemovable]="isResultRemovable"
+      *ngFor="let movie of results"
+      [movie]="movie"
+      (nominateMovie)="emitNominate($event)"
+      (removeMovie)="emitRemove($event)"
+      (getMovieDetails)="emitGetMovieDetails($event)"
+      [isResultRemovable]="areResultsRemovable"
     ></app-tile>
   </mat-accordion>
 </div>
-

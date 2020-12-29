@@ -9,25 +9,24 @@ import { Result } from '../result';
 })
 export class ResultsComponent{
   @Input() results: Result[];
-  @Input() isResultRemovable: boolean;
+  @Input() areResultsRemovable: boolean;
   @Input() title: string;
 
   @Output() removeNomination = new EventEmitter<Result>();
   @Output() addNomination = new EventEmitter<Result>();
-  @Output() selectMovie = new EventEmitter<number>();
+  @Output() getMovieDetails = new EventEmitter<number>();
 
   constructor() { }
 
-  remove($event): void {
+  emitRemove($event): void {
     this.removeNomination.emit($event);
   }
 
-  add($event): void {
+  emitNominate($event): void {
     this.addNomination.emit($event);
   }
 
-  select($event): void {
-    this.selectMovie.emit($event);
+  emitGetMovieDetails($event): void {
+    this.getMovieDetails.emit($event);
   }
-
 }

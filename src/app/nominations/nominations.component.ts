@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MovieResult, Result } from '../movie/result';
 import { SearchService } from '../search-bar/search.service';
 import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
@@ -23,35 +23,28 @@ import { animate, sequence, state, style, transition, trigger } from '@angular/a
   ]
 })
 
-export class NominationsComponent implements OnInit {
+export class NominationsComponent {
 
   constructor(
     private searchService: SearchService
   ) { }
 
   searchResults: Result[];
-  nominationsList: Result[];
+  nominationsList: Result[] = [];
   selectedMovie: MovieResult;
-  areDetailsLoaded = false;
-
-  ngOnInit(): void {
-    this.nominationsList = [];
-  }
+  isDetailCardLoaded = false;
 
   setSearchResults($event): void {
-    if (!this.searchResults){
-      this.searchResults = [];
-    }
     this.searchResults = $event.Search;
   }
 
   addNominations($event): void {
     if (this.nominationsList.length >= 5){
-      console.log('La liste est pleine!');
+      console.log('The list is full!');
       return;
     }
     if (this.nominationsList.find(x => x === $event)){
-      console.log('le film est déjà dans la liste');
+      console.log('this movie is already in the nomination list');
       return;
     }
     this.nominationsList.push($event);
@@ -61,10 +54,9 @@ export class NominationsComponent implements OnInit {
     this.nominationsList = this.nominationsList.filter(movie => movie.Title !== $event.Title);
   }
 
-  selectMovie($event: number): void {
-
+  getSelectedMovieDetails($event: number): void {
     this.searchService.getMovieByImdbID($event).subscribe(movie => {
-      this.areDetailsLoaded = true;
+      this.isDetailCardLoaded = true;
       this.selectedMovie = movie;
     });
   }

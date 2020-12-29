@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SearchService } from './search.service';
-import {Result, SearchResults} from '../movie/result';
+import { SearchResults } from '../movie/result';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,25 +14,16 @@ export class SearchBarComponent {
 
   constructor(
     private http: HttpClient,
-    private searchService: SearchService) { }
+    private searchService: SearchService
+  ) { }
 
-  @Output() movieList = new EventEmitter<SearchResults>(); // TODO générer liste de film
+  @Output() searchResults = new EventEmitter<SearchResults>();
 
-  movie: Result;
-  searchterm: string;
-
-  getMovieList(): void {
-    this.searchService.getResultsByTitle(this.searchterm).subscribe(result => {
-      this.movieList.emit(result);
-    });
+  getSearchResults(searchTerm: string): Observable<SearchResults> {
+    return this.searchService.getResultsByTitle(searchTerm);
   }
 
-  setSearchTerm($event): void{
-    this.searchterm = $event.target.value;
-  }
-
-  setSearchTermAndGetMovieList($event): void {
-    this.setSearchTerm($event);
-    this.getMovieList();
+  emitSearchResults($event): void {
+    this.getSearchResults($event.target.value).subscribe(result => this.searchResults.emit(result));
   }
 }

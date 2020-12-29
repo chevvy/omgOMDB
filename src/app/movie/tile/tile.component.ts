@@ -1,7 +1,7 @@
-import {Component, Input, Output, EventEmitter, ViewChild, OnInit} from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, OnInit } from '@angular/core';
 import { Result } from '../result';
 import { MatExpansionPanel } from '@angular/material/expansion';
-import {animate, sequence, state, style, transition, trigger} from '@angular/animations';
+import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-tile',
@@ -34,47 +34,45 @@ import {animate, sequence, state, style, transition, trigger} from '@angular/ani
 })
 
 export class TileComponent implements OnInit {
-  @Output() addMovie = new EventEmitter<Result>();
+  @Output() nominateMovie = new EventEmitter<Result>();
   @Output() removeMovie = new EventEmitter<Result>();
-  @Output() selectMovie = new EventEmitter<number>();
+  @Output() getMovieDetails = new EventEmitter<number>();
+
   @Input() isResultRemovable;
+  @Input() movie: Result;
 
   @ViewChild(MatExpansionPanel) tileExpansionPanel: MatExpansionPanel;
 
-  isTileSelected = false;
+  isTileExpanded = false;
   isTileRemoved = false;
-
   tileAddState: 'added'| 'notadded' = 'notadded';
 
   constructor() { }
-  // TODO un checkup qui vérifie dans le store lorsque changement de liste de nominations
-  // TODO si le titre de la tile s'y retrouve, alors on grey-out le bouton ajout (ou retirer?)
-  @Input() movie: Result;
 
   ngOnInit(): void {
     if (this.isResultRemovable) {
-      this.tileAddState = 'notadded';
       this.tileAddState = 'added';
     }
   }
 
-  add(): void {
-    this.addMovie.emit(this.movie);
+  nominateClicked(): void {
+    this.nominateMovie.emit(this.movie);
     this.tileExpansionPanel.close();
   }
 
-  remove(): void {
-    if (this.isTileRemoved){
+  removeClicked(): void {
+    // TODO fix weird call by anim system
+    if (this.isTileRemoved){ // Protects against weird call by the anim system on init
       this.removeMovie.emit(this.movie);
     }
   }
 
-  getMoreDetails(): void {
-    this.selectMovie.emit(this.movie.imdbID);
+  getMoreDetailsClicked(): void {
+    this.getMovieDetails.emit(this.movie.imdbID);
     this.tileExpansionPanel.close();
   }
 
   tileClicked(): void {
-    this.isTileSelected ? this.isTileSelected = false : this.isTileSelected = true;
+    this.isTileExpanded ? this.isTileExpanded = false : this.isTileExpanded = true;
   }
 }
