@@ -19,7 +19,7 @@ export class SearchService {
     return this.http.get<MovieDetails>(apiReq);
   }
 
-  getResultsByTitle(title: string): Observable<Movies> {
+  getSearchResultsByTitle(title: string): Observable<Movies> {
     const apiReq = this.apiUrl + '&s=' + title;
     return this.http.get<Movies>(apiReq);
   }

@@ -40,10 +40,12 @@ export class NominationsManagerComponent {
 
   addNominations($event): void {
     if (this.nominationsList.length >= 5){
+      // TODO implement visual feedback
       console.log('The list is full!');
       return;
     }
     if (this.nominationsList.find(x => x === $event)){
+      // TODO implement visual feedback
       console.log('this shared is already in the nomination list');
       return;
     }
@@ -54,7 +56,7 @@ export class NominationsManagerComponent {
     this.nominationsList = this.nominationsList.filter(movie => movie.Title !== $event.Title);
   }
 
-  getSelectedMovieDetails($event: number): void {
+  setSelectedMovieDetails($event: number): void {
     this.searchService.getMovieByImdbID($event).subscribe(movie => {
       this.isDetailCardLoaded = true;
       this.selectedMovie = movie;

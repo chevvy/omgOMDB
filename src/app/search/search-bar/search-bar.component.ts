@@ -19,7 +19,7 @@ export class SearchBarComponent {
   @Output() searchResults = new EventEmitter<Movies>();
 
   getSearchResults(searchTerm: string): Observable<Movies> {
-    return this.searchService.getResultsByTitle(searchTerm);
+    return this.searchService.getSearchResultsByTitle(searchTerm);
   }
 
   emitSearchResults($event): void {
