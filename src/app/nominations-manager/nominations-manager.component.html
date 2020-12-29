@@ -6,7 +6,7 @@
           *ngIf="searchResults"
           [results]="searchResults"
           [title]="'Search movies-list'"
-          [areResultsRemovable]="false"
+          [areMoviesRemovable]="false"
           (getMovieDetails)="setSelectedMovieDetails($event)"
           (addNomination)="addNominations($event)">
         </app-movies-list>
@@ -20,7 +20,7 @@
         *ngIf="nominationsList"
         [results]="nominationsList"
         [title]="'Nomination List'"
-        [areResultsRemovable]="true"
+        [areMoviesRemovable]="true"
         (getMovieDetails)="setSelectedMovieDetails($event)"
         (removeNomination)="removeNominations($event)">
       </app-movies-list>

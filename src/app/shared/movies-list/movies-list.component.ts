@@ -8,7 +8,7 @@ import { Movie } from '../movie.interface';
 })
 export class MoviesListComponent {
   @Input() results: Movie[];
-  @Input() areResultsRemovable: boolean;
+  @Input() areMoviesRemovable: boolean;
   @Input() title: string;
 
   @Output() removeNomination = new EventEmitter<Movie>();

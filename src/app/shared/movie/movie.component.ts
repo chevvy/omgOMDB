@@ -38,7 +38,7 @@ export class MovieComponent implements OnInit {
   @Output() removeMovie = new EventEmitter<Movie>();
   @Output() getMovieDetails = new EventEmitter<number>();
 
-  @Input() isResultRemovable;
+  @Input() isMovieRemovable;
   @Input() movie: Movie;
 
   @ViewChild(MatExpansionPanel) tileExpansionPanel: MatExpansionPanel;
@@ -50,7 +50,7 @@ export class MovieComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.isResultRemovable) {
+    if (this.isMovieRemovable) {
       this.tileAddState = 'added';
     }
   }

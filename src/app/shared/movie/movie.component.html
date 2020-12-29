@@ -5,25 +5,25 @@
   [@remove]="isTileRemoved ? 'removed' : 'active'"
   (@remove.done)="removeClicked()">
 
-  <mat-expansion-panel-header  *ngIf="isResultRemovable" [@add]="tileAddState">
+  <mat-expansion-panel-header *ngIf="isMovieRemovable" [@add]="tileAddState">
     <mat-panel-title>{{movie.Title + " (" + movie.Year + ")"}}</mat-panel-title>
   </mat-expansion-panel-header>
 
-  <mat-expansion-panel-header  *ngIf="!isResultRemovable">
+  <mat-expansion-panel-header  *ngIf="!isMovieRemovable">
     <mat-panel-title>{{movie.Title + " (" + movie.Year + ")"}}</mat-panel-title>
   </mat-expansion-panel-header>
 
   <button
     mat-raised-button
     style="background: #C2185B"
-    *ngIf="movie && !isResultRemovable"
+    *ngIf="movie && !isMovieRemovable"
     (click)="nominateClicked()">
       Nominate
   </button>
   <button
     mat-raised-button
     style="background: #C2185B"
-    *ngIf="isResultRemovable"
+    *ngIf="isMovieRemovable"
     (click)="isTileRemoved = true">
       Remove
   </button>
