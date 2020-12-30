@@ -2,6 +2,8 @@
 
 A small manager of movie nominations for award considerations using the [OMDB open API](https://omdbapi.com/). 
 
+DEPLOYED VERSION : https://omgomdb.netlify.app/
+
 Features:
 - Search for movies by title and get results as you type your requests
   - Search results are populated by OMDB's api
