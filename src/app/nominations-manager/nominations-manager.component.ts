@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieDetails, Movie } from '../shared/movie.interface';
+import {MovieDetails, Movie, Movies} from '../shared/movie.interface';
 import { SearchService } from '../search/search.service';
 import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
 
@@ -34,11 +34,11 @@ export class NominationsManagerComponent {
   selectedMovie: MovieDetails;
   isDetailCardLoaded = false;
 
-  setSearchResults($event): void {
+  setSearchResults($event: Movies): void {
     this.searchResults = $event.Search;
   }
 
-  addNominations($event): void {
+  addNominations($event: Movie): void {
     if (this.nominationsList.length >= 5){
       // TODO implement visual feedback
       console.log('The list is full!');
@@ -46,13 +46,13 @@ export class NominationsManagerComponent {
     }
     if (this.nominationsList.find(x => x === $event)){
       // TODO implement visual feedback
-      console.log('this shared is already in the nomination list');
+      console.log('this shared is already in the nomination list!');
       return;
     }
     this.nominationsList.push($event);
   }
 
-  removeNominations($event): void {
+  removeNominations($event: Movie): void {
     this.nominationsList = this.nominationsList.filter(movie => movie.Title !== $event.Title);
   }
 

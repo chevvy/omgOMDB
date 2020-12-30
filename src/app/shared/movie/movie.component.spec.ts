@@ -58,12 +58,7 @@ describe('MovieComponent', () => {
 
     it('emits the movie', () => {
       spyOn(component.nominateMovie, 'emit');
-      const movie = {
-        Title: 'test',
-        Year: '1991',
-        imdbID: 123,
-        Poster: 'url'
-      };
+      const movie = { Title: 'test', Year: '1991', imdbID: 123, Poster: 'url'};
       component.movie = movie;
 
       component.nominateClicked();
@@ -81,12 +76,7 @@ describe('MovieComponent', () => {
     let movie;
     beforeEach(() => {
       spyOn(component.removeMovie, 'emit');
-      movie = {
-        Title: 'test',
-        Year: '1991',
-        imdbID: 123,
-        Poster: 'url'
-      };
+      movie = { Title: 'test', Year: '1991', imdbID: 123, Poster: 'url' };
       component.movie = movie;
     });
 
@@ -112,12 +102,7 @@ describe('MovieComponent', () => {
   describe('getMoreDetailsClicked', () => {
     let movie;
     beforeEach(() => {
-      movie = {
-        Title: 'test',
-        Year: '1991',
-        imdbID: 123,
-        Poster: 'url'
-      };
+      movie = { Title: 'test', Year: '1991', imdbID: 123, Poster: 'url' };
       component.movie = movie;
       spyOn(component.tileExpansionPanel, 'close');
       spyOn(component.getMovieDetails, 'emit');
