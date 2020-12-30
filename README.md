@@ -1,14 +1,27 @@
 # OmgOMDB
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+A small manager of movie nominations for award considerations using the [OMDB open API](https://omdbapi.com/). 
+
+Features:
+- Search for movies by title and get results as you type your requests
+  - Search results are populated by OMDB's api
+- Each search results can be nominated -> added to your nominations list
+- You can also get more info on a search results by using the "Get more details"
+  - Metacritic score
+  - Poster
+  - Plot summary
+ - Material design using Angular Material
+ - Mobile support
+ - Various animations for removing and adding nominations
+ 
+ I used this project as a little playground/experiment for angular material as I've never used it before. 
+ The app is constantly deployed at this address : https://omgomdb.netlify.app/
+
+Angular version: 11.0.5.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
@@ -17,11 +30,3 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
