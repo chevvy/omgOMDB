@@ -9,6 +9,7 @@
           [areMoviesRemovable]="false"
           (getMovieDetails)="setSelectedMovieDetails($event)"
           (addNomination)="addNominations($event)"
+          (removeNomination)="removeNominations($event)"
           [nominations]="nominationsList">
         </app-movies-list>
       </mat-card-content>

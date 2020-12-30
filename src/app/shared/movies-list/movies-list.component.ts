@@ -34,4 +34,9 @@ export class MoviesListComponent {
     if (!this.nominations) { return true; }
     return !this.nominations.includes(movie);
   }
+
+  canMovieBeRemoved(movie: Movie): boolean {
+    if (!this.nominations) { return false; }
+    return this.nominations.includes(movie);
+  }
 }

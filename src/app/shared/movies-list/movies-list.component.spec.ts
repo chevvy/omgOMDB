@@ -92,4 +92,40 @@ describe('MoviesListComponent', () => {
       });
     });
   });
+
+  describe('canMovieBeRemoved', () => {
+    let movie: Movie;
+    let nominationsList: Movie[];
+    beforeEach(() => {
+      movie = { Title: 'test', Year: '1999', imdbID: 1337, Poster: 'url'};
+      nominationsList = [
+        movie,
+        { Title: 'test2', Year: '2020', imdbID: 969, Poster: 'url'}
+      ];
+    });
+
+    describe('the nominations list is undef', () => {
+      it('cant be removed and returns false', () => {
+        expect(component.canMovieBeRemoved(movie)).toEqual(false);
+      });
+    });
+
+    describe('the nominations list includes the movie', () => {
+      it('can be removed and returns true', () => {
+        component.nominations = nominationsList;
+
+        expect(component.canMovieBeRemoved(movie)).toEqual(true);
+      });
+    });
+
+    describe('the nominations list doesnt includes the movie', () => {
+      it('cant be removed and returns false', () => {
+        component.nominations = nominationsList;
+        expect(
+          component.canMovieBeRemoved({
+            Title: 'notTest', Year: '1999', imdbID: 1337, Poster: 'url'
+          })).toEqual(false);
+      });
+    });
+  });
 });

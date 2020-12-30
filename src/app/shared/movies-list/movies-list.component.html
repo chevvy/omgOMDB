@@ -8,6 +8,7 @@
       (removeMovie)="emitRemove($event)"
       (getMovieDetails)="emitGetMovieDetails($event)"
       [isMovieRemovable]="areMoviesRemovable"
+      [isMovieResultRemovable]="canMovieBeRemoved(movie)"
       [canMovieBeNominated]="canMovieBeNominated(movie)"
     ></app-movie>
   </mat-accordion>

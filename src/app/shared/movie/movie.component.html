@@ -37,6 +37,13 @@
   <button
     mat-raised-button
     style="background: #C2185B"
+    *ngIf="isMovieResultRemovable"
+    (click)="removeMovie.emit(movie)">
+    Remove
+  </button>
+  <button
+    mat-raised-button
+    style="background: #C2185B"
     (click)="getMoreDetailsClicked()">
       Get more details
   </button>
