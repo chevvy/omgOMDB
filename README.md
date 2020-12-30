@@ -6,6 +6,8 @@ Features:
 - Search for movies by title and get results as you type your requests
   - Search results are populated by OMDB's api
 - Each search results can be nominated -> added to your nominations list
+- Visual indicator in the results that a movie is already nominated 
+- Movies can be removed from the nomination list from the search results or the nomination list itself
 - You can also get more info on a search results by using the "Get more details"
   - Metacritic score
   - Poster
