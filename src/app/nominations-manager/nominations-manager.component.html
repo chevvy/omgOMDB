@@ -5,7 +5,7 @@
         <app-movies-list
           *ngIf="searchResults"
           [results]="searchResults"
-          [title]="'Search movies-list'"
+          [title]="'Search results'"
           [areMoviesRemovable]="false"
           (getMovieDetails)="setSelectedMovieDetails($event)"
           (addNomination)="addNominations($event)"
@@ -26,7 +26,6 @@
         (getMovieDetails)="setSelectedMovieDetails($event)"
         (removeNomination)="removeNominations($event)">
       </app-movies-list>
-      <!-- TODO put details panel in its own component -->
       <mat-card
         *ngIf="selectedMovie"
         [@getDetails]="isDetailCardLoaded ? 'loaded' : 'loading'"

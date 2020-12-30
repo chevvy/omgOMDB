@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {MovieDetails, Movie, Movies} from '../shared/movie.interface';
+import { MovieDetails, Movie, Movies } from '../shared/movie.interface';
 import { SearchService } from '../search/search.service';
 import { animate, sequence, state, style, transition, trigger } from '@angular/animations';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-nominations-manager',
@@ -26,7 +27,8 @@ import { animate, sequence, state, style, transition, trigger } from '@angular/a
 export class NominationsManagerComponent {
 
   constructor(
-    private searchService: SearchService
+    private searchService: SearchService,
+    private snackBar: MatSnackBar
   ) { }
 
   searchResults: Movie[];
@@ -40,15 +42,12 @@ export class NominationsManagerComponent {
 
   addNominations($event: Movie): void {
     if (this.nominationsList.length >= 5){
-      // TODO implement visual feedback
-      console.log('The list is full!');
+      this.snackBar.open('The list is full!', '', {
+        duration: 2000
+      });
       return;
     }
-    if (this.nominationsList.find(x => x === $event)){
-      // TODO implement visual feedback
-      console.log('this shared is already in the nomination list!');
-      return;
-    }
+    if (this.nominationsList.find(x => x === $event)){ return; }
     this.nominationsList.push($event);
   }
 

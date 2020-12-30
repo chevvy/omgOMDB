@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, ViewChild, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, OnInit } from '@angular/core';
 import { Movie } from '../movie.interface';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { animate, sequence, state, style, transition, trigger } from '@angular/animations';

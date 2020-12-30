@@ -1,10 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-
 import { NominationsManagerComponent } from './nominations-manager.component';
-import {SearchService} from '../search/search.service';
-import {SearchMockService} from '../search/search-mock.service';
-import {Movie, Movies} from '../shared/movie.interface';
-import {of} from 'rxjs';
+import { SearchService } from '../search/search.service';
+import { SearchMockService } from '../search/search-mock.service';
+import { Movies } from '../shared/movie.interface';
+import { of } from 'rxjs';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 describe('NominationsManagerComponent', () => {
@@ -16,8 +18,10 @@ describe('NominationsManagerComponent', () => {
       declarations: [ NominationsManagerComponent ],
       providers: [
         NominationsManagerComponent,
-        { provide: SearchService, useClass: SearchMockService }
-      ]
+        { provide: SearchService, useClass: SearchMockService },
+      ],
+      imports: [ MatSnackBarModule, BrowserAnimationsModule ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   });
