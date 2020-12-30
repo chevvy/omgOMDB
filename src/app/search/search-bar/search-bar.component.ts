@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { SearchService } from '../search.service';
 import { Movies } from '../../shared/movie.interface';
 import { Observable } from 'rxjs';

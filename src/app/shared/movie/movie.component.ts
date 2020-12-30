@@ -39,6 +39,7 @@ export class MovieComponent implements OnInit {
   @Output() getMovieDetails = new EventEmitter<number>();
 
   @Input() isMovieRemovable;
+  @Input() canMovieBeNominated;
   @Input() movie: Movie;
 
   @ViewChild(MatExpansionPanel) tileExpansionPanel: MatExpansionPanel;

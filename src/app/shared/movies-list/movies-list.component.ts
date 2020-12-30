@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { Movie } from '../movie.interface';
+import {Movie} from '../movie.interface';
 
 @Component({
   selector: 'app-movies-list',
@@ -8,6 +8,7 @@ import { Movie } from '../movie.interface';
 })
 export class MoviesListComponent {
   @Input() results: Movie[];
+  @Input() nominations: Movie[];
   @Input() areMoviesRemovable: boolean;
   @Input() title: string;
 
@@ -27,5 +28,10 @@ export class MoviesListComponent {
 
   emitGetMovieDetails($event): void {
     this.getMovieDetails.emit($event);
+  }
+
+  canMovieBeNominated(movie: Movie): boolean {
+    if (!this.nominations) { return true; }
+    return !this.nominations.includes(movie);
   }
 }

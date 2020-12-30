@@ -8,7 +8,8 @@
           [title]="'Search movies-list'"
           [areMoviesRemovable]="false"
           (getMovieDetails)="setSelectedMovieDetails($event)"
-          (addNomination)="addNominations($event)">
+          (addNomination)="addNominations($event)"
+          [nominations]="nominationsList">
         </app-movies-list>
       </mat-card-content>
     </mat-card-content>

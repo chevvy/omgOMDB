@@ -16,9 +16,16 @@
   <button
     mat-raised-button
     style="background: #C2185B"
-    *ngIf="movie && !isMovieRemovable"
+    *ngIf="movie && !isMovieRemovable && canMovieBeNominated"
     (click)="nominateClicked()">
       Nominate
+  </button>
+  <button
+    mat-raised-button
+    disabled
+    style="background: #C2185B"
+    *ngIf="!canMovieBeNominated">
+    Movie Already Nominated!
   </button>
   <button
     mat-raised-button
