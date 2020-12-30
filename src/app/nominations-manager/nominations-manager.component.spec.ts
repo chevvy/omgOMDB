@@ -43,8 +43,8 @@ describe('NominationsManagerComponent', () => {
     it('should set the search results', () => {
       const searchResults: Movies = {
         Search: [
-          { Title: 'test', Year: '1999', imdbID: 1337, Poster: 'url'},
-          { Title: 'test2', Year: '2020', imdbID: 969, Poster: 'url'}
+          { Title: 'test', Year: '1999', imdbID: 1337, Poster: 'url', Type: 'movie'},
+          { Title: 'test2', Year: '2020', imdbID: 969, Poster: 'url', Type: 'movie'}
         ]
       };
       component.setSearchResults(searchResults);
@@ -79,7 +79,7 @@ describe('NominationsManagerComponent', () => {
     describe('the movie is not in the list and the nomination list < 5', () => {
       it('should add the movie to the nomination list', () => {
         const nominationsList = [movie, movie, movie, event];
-        const newMovie = { Title: 'pompom', Year: '2017', imdbID: 867, Poster: 'url'};
+        const newMovie = { Title: 'pompom', Year: '2017', imdbID: 867, Poster: 'url', Type: 'movie'};
         component.nominationsList = nominationsList;
 
         component.addNominations(newMovie);

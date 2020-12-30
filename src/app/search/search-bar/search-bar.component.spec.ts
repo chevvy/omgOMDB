@@ -29,8 +29,8 @@ describe('SearchBarComponent', () => {
 
     mockMovies = {
       Search: [
-        { Title: 'test', Year: '1991', imdbID: 123, Poster: 'url1' },
-        { Title: 'test2', Year: '1980', imdbID: 124, Poster: 'url2' }
+        { Title: 'test', Year: '1991', imdbID: 123, Poster: 'url1', Type: 'movie' },
+        { Title: 'test2', Year: '1980', imdbID: 124, Poster: 'url2', Type: 'movie'}
       ]
     };
   });
@@ -66,6 +66,25 @@ describe('SearchBarComponent', () => {
       component.emitSearchResults($event);
 
       expect(component.searchResults.emit).toHaveBeenCalledWith(mockMovies);
+    });
+
+    it('filters out non-movie elements', () => {
+      const mockMoviesInvalid = {
+        Search: [
+          { Title: 'test', Year: '1991', imdbID: 123, Poster: 'url1', Type: 'movie' },
+          { Title: 'test2', Year: '1980', imdbID: 124, Poster: 'url2', Type: 'game'}
+        ]
+      };
+      const filteredMovies = {
+        Search: [
+          { Title: 'test', Year: '1991', imdbID: 123, Poster: 'url1', Type: 'movie' },
+        ]
+      };
+      spyOn(component, 'getSearchResults').and.returnValue(of(mockMoviesInvalid));
+
+      component.emitSearchResults($event);
+
+      expect(component.searchResults.emit).toHaveBeenCalledWith(filteredMovies);
     });
   });
 });

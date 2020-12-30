@@ -21,6 +21,13 @@ export class SearchBarComponent {
   }
 
   emitSearchResults($event): void {
-    this.getSearchResults($event.target.value).subscribe(result => this.searchResults.emit(result));
+    this.getSearchResults($event.target.value).subscribe(results => {
+      if (!results.Search) {
+        this.searchResults.emit({ Search: [] });
+        return;
+      }
+      const filteredResults = results.Search.filter(result => result.Type === 'movie');
+      this.searchResults.emit({ Search: filteredResults });
+    });
   }
 }
